@@ -14,6 +14,7 @@ jobs:
 
       - name: Login to DockerHub
         uses: actions/checkout@v3
+        run: echo "${{ secrets.DOCKERHUB_USERNAME }}" 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -21,10 +22,9 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./app
           file: ./Dockerfile
           push: true
-          tags: recipes/latest
           build-args: |
             "USERNAME=${{ secrets.USERNAME}}"
             "PASSWORD=${{ secrets.PASSWORD}}"
@@ -32,3 +32,4 @@ jobs:
             "TABLE_NAME=${{ secrets.TABLE_NAME }}"
             "URL=${{ secrets.URL }}"
             "PORT=${{ secrets.PORT }}"
+          tags: recipes/latest
