@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: DOCKER USERNAME
-        run: echo "${{ secrets.DOCKERHUB_USERNAME }}" 
+        run: echo ${{ secrets.DOCKERHUB_USERNAME }}
 
       - name: Login to DockerHub
         uses: actions/checkout@v3
