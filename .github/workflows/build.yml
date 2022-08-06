@@ -12,12 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: DOCKER USERNAME
+        run: echo "${{ secrets.DOCKERHUB_USERNAME }}" 
+
       - name: Login to DockerHub
         uses: actions/checkout@v3
-        run: echo "${{ secrets.DOCKERHUB_USERNAME }}" 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build and push
         uses: docker/build-push-action@v2
