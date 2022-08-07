@@ -8,8 +8,9 @@ USERNAME = os.environ["USERNAME"]
 PASSWORD = os.environ["PASSWORD"]
 CLUSTER_NAME = os.environ["CLUSTER_NAME"]
 DB_NAME = os.environ["DB_NAME"]
-TABLE_NAME = os.environ["TABLE"]
-URI = f"mongodb+srv://{USERNAME}:{PASSWORD}@{CLUSTER_NAME}.sfi8s.mongodb.net/?retryWrites=true&w=majority"
+TABLE_NAME = os.environ["TABLE_NAME"]
+URI = f"mongodb+srv: // {USERNAME}: {PASSWORD}@{CLUSTER_NAME}" \
+    ".sfi8s.mongodb.net /?retryWrites = true & w = majority"
 URL = os.environ["URL"]
 
 
@@ -22,6 +23,7 @@ def conn():
     try:
         client = MongoClient(URI, tlsCAFile=certifi.where())
         db = client.test
+        print(db)
         print("MongoDB cluster is reachable.")
         return client
     except ConnectionFailure as e:
