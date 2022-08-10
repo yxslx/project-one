@@ -3,7 +3,7 @@ name: Publish DockerHub image
 on:
   push:
     branches:
-      - 'jk-etl'
+      - 'main'
 
 jobs:
   build-container:
